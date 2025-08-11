@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 	public GameManager instance;
     public TMP_Text player1ScoreText;
 	public TMP_Text player2ScoreText;
+	public Slider volumeSlider;
+	public AudioSource musicSource;
 	[SerializeField] int player1Score = 0;
 	[SerializeField] int player2Score = 0;
 
@@ -34,5 +37,10 @@ public class GameManager : MonoBehaviour
 	public void LoadGameScene()
 	{
 		SceneManager.LoadScene(1);
+	}
+
+	public void SetVolume()
+	{
+		musicSource.volume = volumeSlider.value;
 	}
 }

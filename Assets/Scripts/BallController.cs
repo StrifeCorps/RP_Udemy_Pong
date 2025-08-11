@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BallController : MonoBehaviour
 {
+	AudioSource sfx;
 	Rigidbody2D rb;
 	Renderer renderer;
 	Vector2 velocity;
@@ -18,6 +19,7 @@ public class BallController : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		renderer = GetComponent<Renderer>();
+		sfx = GetComponent<AudioSource>();
 		startPosition = transform.position;
 		isRespawning = false;
 	}
@@ -27,6 +29,7 @@ public class BallController : MonoBehaviour
 		gameManager = FindFirstObjectByType<GameManager>();
 		velocity = InitiliazeVelocity();
 		rb.linearVelocity = velocity;
+		sfx.volume = gameManager.volumeSlider.value/2f;
 	}
 
 	private void FixedUpdate()
@@ -44,6 +47,8 @@ public class BallController : MonoBehaviour
 		{
 			rb.linearVelocity *= 1.1f;
 		}
+
+		sfx.Play();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
