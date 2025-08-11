@@ -1,18 +1,18 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class Player_Controller : MonoBehaviour
 {
     [SerializeField]
     private float speed = 10.0f;
     private Rigidbody2D rb;
-    private Collider2D collider;
+    private BoxCollider2D collider;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-		collider = GetComponent<Collider2D>();
+		collider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
